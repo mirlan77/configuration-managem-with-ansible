@@ -6,8 +6,12 @@
   tasks:
     - name: Download wordpress
       get_url:
-      url: "https://wordpress.org/latest.zip"
-      dest: /tmp/
+        url: "https://wordpress.org/latest.zip"
+        dest: /tmp/
+    - name: Install unzip
+      packege:
+        name: unzip
+        state: present
     - name: Unzip
       unarchive:
         src: /tmp/wordpress-5.2.3.zip
