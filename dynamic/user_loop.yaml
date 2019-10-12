@@ -1,0 +1,15 @@
+---
+- name: Playbook for tasks
+  hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Add multiple packages
+      user: 
+        name: "{{item}}"
+        state: present
+      with_items:
+        - bob
+        - sam
+        - ben
+        - tim
