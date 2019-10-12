@@ -4,12 +4,12 @@
   become: yes
   become_method: sudo
   tasks:
-    - name: Download wordpress
+    - name: download wordpress
       get_url:
         url: "https://wordpress.org/wordpress-5.2.3.zip"
         dest: /tmp/
-    - name: Install unzip
-      packege:
+    - name: install Unzip
+      package:
         name: unzip
         state: present
     - name: unzip
@@ -17,4 +17,4 @@
         src: /tmp/wordpress-5.2.3.zip
         dest: /tmp
         remote_src: yes
-      ignor_errors: true  
+      ignore_errors: true
