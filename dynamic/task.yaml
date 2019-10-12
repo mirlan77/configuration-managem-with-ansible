@@ -19,5 +19,15 @@
     - name: Install telnet
       yum:
         name: telnet
-        state: latest     
+        state: latest
+    - name: Add user bob
+      user:
+        name: bob
+        state: present
+        comment: "Bob Smith"
+        group: wheel
+        uid: 2001
+        create_home: yes
+        expires: 1422403387
+        generate_ssh_key: yes   
 
