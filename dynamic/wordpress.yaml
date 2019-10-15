@@ -29,7 +29,7 @@
 
     - name: Unzip wordpress file
       unarchive:
-        src: tar xzvf latest.tar.gz 
+        src: tar xzvf latest.tar.gz
         dest: /var/www/html/
         remote_src: yes
       become: yes
