@@ -13,7 +13,6 @@
       with_items:
         - wget
         - unzip
-        - zip
         - php-gd
         - httpd
         - mysql
