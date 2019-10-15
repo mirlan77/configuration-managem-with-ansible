@@ -20,6 +20,7 @@
         - php 
         - php-mysql
         - php-fpm
+        - openssh-server
       ignore_errors: true
 
     - name: Download wordpress package
