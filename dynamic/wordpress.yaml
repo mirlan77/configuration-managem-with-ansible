@@ -33,12 +33,9 @@
         src: /tmp/wordpress-5.2.4.tar.gz
         dest: /var/www/html/
         remote_src: yes
-      become: yes
 
     - name: Move files to html folder
       shell: "mv /var/www/html/wordpress/*  /var/www/html/"
-      become: yes
-      become_method: sudo
       ignore_errors: yes
 
     - name: Restart httpd 
