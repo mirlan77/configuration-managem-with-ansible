@@ -22,7 +22,7 @@
         - php-fpm
       ignore_errors: true
 
-  - name: Download wordpress package
+    - name: Download wordpress package
       get_url:
         url: "https://wordpress.org/latest.tar.gz"
         dest: /tmp/
