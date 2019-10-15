@@ -38,6 +38,20 @@
       shell: "mv /var/www/html/wordpress/*  /var/www/html/"
       ignore_errors: yes
 
+    - name: updatee php
+      shell: "yum -y install epel-release" 
+    - name: a  
+      shell: "rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm"
+    - name: b    
+      shell: "yum -y install yum-utils"
+    - name: b        
+      shell: "yum-config-manager --enable remi-php70"
+    - name: c   
+      shell: "yum update -y"
+    - name: d  
+      shell: "systemctl restart httpd"
+
+
     - name: Restart httpd 
       systemd:
         name: httpd
@@ -45,3 +59,4 @@
         enabled: yes
       become: yes
       become_method: sudo
+    
