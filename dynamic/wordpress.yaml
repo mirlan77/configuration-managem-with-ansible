@@ -30,7 +30,7 @@
 
     - name: Unzip wordpress file
       unarchive:
-        src: /tmp/wordpress-5.2.4.tar.gz
+        src: /tmp/wordpress-5.2.20.tar.gz
         dest: /var/www/html/
         remote_src: yes
 
