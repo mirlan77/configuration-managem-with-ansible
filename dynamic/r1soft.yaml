@@ -1,0 +1,18 @@
+---
+- name: Playbook for tasks
+  hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Create repo
+      copy:
+        src: r1soft.repo
+        dest: /etc/yum.repos.d/
+
+    - name: Istall agent
+      package:
+        name: serverbackup-enterprise-agent
+        state: present
+
+    - name: Get Key
+      shell: "r1soft-setup --get-key http://34.245.214.119:8080"        
