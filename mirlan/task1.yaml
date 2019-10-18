@@ -1,8 +1,8 @@
 ---
 - name: Playbook for tasks
   hosts: all
-  becom: yes
-  becom_method: sudo
+  become: yes
+  become_method: sudo
   tasks:
     - name: Install apache 
       yum:
