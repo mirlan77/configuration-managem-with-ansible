@@ -25,4 +25,4 @@
       systemd:
         name: firewalld
         state: stopped
-        enabled: false     
+        enabled: false  
