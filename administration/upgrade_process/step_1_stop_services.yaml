@@ -1,0 +1,58 @@
+---
+- name: Playbook for Stopping Services
+  hosts: "{{host}}"
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Stop service1
+      when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7"
+      systemd:
+        name: "{service1}}"
+        state: stopped
+      ignore_errors: true  
+    - name: Stop service1
+      when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7"
+      systemd:
+        name: "{service1}}"
+        state: stopped
+      ignore_errors: true  
+    - name: Stop service1
+      when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7"
+      systemd:
+        name: "{service1}}"
+        state: stopped
+      ignore_errors: true  
+    - name: Stop service1
+      when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7"
+      systemd:
+        name: "{service1}}"
+        state: stopped
+      ignore_errors: true     
+
+
+
+
+    - name: Stop service1
+      when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6"
+      service:
+        name: "{service1}}"
+        state: stopped
+      ignore_errors: true  
+    - name: Stop service1
+      when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6"
+      service:
+        name: "{service1}}"
+        state: stopped
+      ignore_errors: true  
+    - name: Stop service1
+      when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6"
+      service:
+        name: "{service1}}"
+        state: stopped
+      ignore_errors: true  
+    - name: Stop service1
+      when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6"
+      service:
+        name: "{service1}}"
+        state: stopped
+      ignore_errors: true     
