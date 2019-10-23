@@ -1,10 +1,35 @@
 ---
-- name: Playbook for Download from Link
+- name: Playbook for Upgrading kernel
   hosts: "{{host}}"
   become: yes
   become_method: sudo
   tasks:
-    - name: upgrade kernel
-       package: 
-       name: kernel
-       state: latest
+    - name: register
+      shell: uname -r
+      register: message
+
+    - name: Debug
+      debug:
+        msg: "{{message}}"
+
+
+    - name: upgrading kernel
+      package:
+        name: kernel
+        state: latest
+
+    - name: Reboot
+      shell: "shutdown -r now"
+
+    - name: Wait 600 seconds for targert connection to become reachable/usable
+      wait_for_connection:
+        delay: 60
+        timeout: 300
+
+    - name: register
+      shell: uname -r
+      register: message
+
+    - name: Debug
+      debug:
+        msg: "{{message}}"
