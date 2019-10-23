@@ -41,18 +41,18 @@
     - name: Stop service1
       when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6"
       service:
-        name: "{service1}}"
+        name: "{service2}}"
         state: stopped
       ignore_errors: true  
     - name: Stop service1
       when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6"
       service:
-        name: "{service1}}"
+        name: "{service3}}"
         state: stopped
       ignore_errors: true  
     - name: Stop service1
       when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6"
       service:
-        name: "{service1}}"
+        name: "{service4}}"
         state: stopped
       ignore_errors: true     
