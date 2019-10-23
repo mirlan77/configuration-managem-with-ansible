@@ -6,53 +6,52 @@
   tasks:
     - name: Stop service1
       when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7"
-      systemd:
-        name: "{service1}}"
+      systemd: 
+        name: "{{service1}}"
         state: stopped
-      ignore_errors: true  
-    - name: Stop service1
+      ignore_errors: true
+    - name: Stop service2
       when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7"
-      systemd:
-        name: "{service1}}"
+      systemd: 
+        name: "{{service2}}"
         state: stopped
-      ignore_errors: true  
-    - name: Stop service1
+      ignore_errors: true
+    - name: Stop service3
       when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7"
-      systemd:
-        name: "{service1}}"
+      systemd: 
+        name: "{{service3}}"
         state: stopped
-      ignore_errors: true  
-    - name: Stop service1
+      ignore_errors: true
+    - name: Stop service4
       when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7"
-      systemd:
-        name: "{service1}}"
+      systemd: 
+        name: "{{service4}}"
         state: stopped
-      ignore_errors: true     
-
+      ignore_errors: true
 
 
 
     - name: Stop service1
       when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6"
-      service:
-        name: "{service1}}"
+      service: 
+        name: "{{service1}}"
         state: stopped
-      ignore_errors: true  
-    - name: Stop service1
+      ignore_errors: true
+    - name: Stop service2
       when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6"
-      service:
-        name: "{service2}}"
+      service: 
+        name: "{{service2}}"
         state: stopped
-      ignore_errors: true  
-    - name: Stop service1
+      ignore_errors: true
+    - name: Stop service3
       when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6"
-      service:
-        name: "{service3}}"
+      service: 
+        name: "{{service3}}"
         state: stopped
-      ignore_errors: true  
-    - name: Stop service1
+      ignore_errors: true
+    - name: Stop service4
       when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6"
-      service:
-        name: "{service4}}"
+      service: 
+        name: "{{service4}}"
         state: stopped
-      ignore_errors: true     
+      ignore_errors: true   

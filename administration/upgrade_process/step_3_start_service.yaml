@@ -1,0 +1,58 @@
+  
+---
+- name: Playbook for Starting Services
+  hosts: "{{host}}"
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: startservice1
+      when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7"
+      systemd: 
+        name: "{{service1}}"
+        state: started
+      ignore_errors: true
+    - name: startservice2
+      when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7"
+      systemd: 
+        name: "{{service2}}"
+        state: started
+      ignore_errors: true
+    - name: startservice3
+      when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7"
+      systemd: 
+        name: "{{service3}}"
+        state: started
+      ignore_errors: true
+    - name: startservice4
+      when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7"
+      systemd: 
+        name: "{{service4}}"
+        state: started
+      ignore_errors: true
+
+
+
+    - name: startservice1
+      when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6"
+      service: 
+        name: "{{service1}}"
+        state: started
+      ignore_errors: true
+    - name: startservice2
+      when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6"
+      service: 
+        name: "{{service2}}"
+        state: started
+      ignore_errors: true
+    - name: startservice3
+      when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6"
+      service: 
+        name: "{{service3}}"
+        state: started
+      ignore_errors: true
+    - name: startservice4
+      when: ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6"
+      service: 
+        name: "{{service4}}"
+        state: started
+      ignore_errors: true
