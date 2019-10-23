@@ -1,0 +1,10 @@
+---
+- name: Playbook for Download from Link
+  hosts: "{{host}}"
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: upgrade kernel
+       package: 
+       name: kernel
+       state: latest
