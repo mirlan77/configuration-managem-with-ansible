@@ -1,5 +1,5 @@
 ---
-- name: Playbook for Provisioning
+- name: Playbook for terminating, starting, stopping, restarting
   hosts: localhost
   become: yes
   become_method: sudo
