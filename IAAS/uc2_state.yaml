@@ -1,0 +1,10 @@
+---
+- name: Playbook for Provisioning
+  hosts: localhost
+  become: yes
+  become_method: sudo
+  tasks:
+    - ec2:
+        instance_ids: "{{instance_ids}}"
+        state: "{{state}}"
+        region: "{{region}}"
