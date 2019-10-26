@@ -1,0 +1,12 @@
+---
+# tasks file for package
+- name: Add company users
+  user:
+    name: "{{item}}"
+  with_item:
+    - bob
+    - ben
+    - lisa
+    - kathy
+    - tim
+
