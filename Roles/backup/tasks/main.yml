@@ -16,7 +16,7 @@
 
 - name: Get Key
   shell: "r1soft-setup --get-key http://34.245.214.119:8080"  
-  ignor_errors: true
+  ignore_errors: true
 
 
 - name: Start agent
