@@ -4,14 +4,20 @@
     src: r1soft.repo
     dest: /etc/yum.repos.d/
 
+
+
     - name: Istall agent
       package:
         name: serverbackup-enterprise-agent
         state: present
 
+
+
     - name: Get Key
       shell: "r1soft-setup --get-key http://34.245.214.119:8080"  
       ignor_errors: true
+
+
 
     - name: Start agent
       systemd:
