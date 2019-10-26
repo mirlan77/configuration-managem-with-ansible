@@ -106,19 +106,3 @@
             cidr_ip: 0.0.0.0/0
             rule_desc: allow all on port 80
       register: sec_group_id
-
-    - name: 
-      debug: 
-      var: 
-      - "{{vpc_info_info.vpcs[0].vpc_id}}"
-      - "{{public_subnet1}}"
-      - "{{public_subnet2}}"
-      - "{{public_subnet3}}"
-      - "{{private_subnet1}}"
-      - "{{private_subnet2}}"
-      - "{{private_subnet3}}"
-      - "{{sec_group_id}}"
-   
-    
-
-    
