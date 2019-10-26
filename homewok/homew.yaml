@@ -14,7 +14,7 @@
         tags:
           name: miki_VPC
           tenancy: default     
-    - name: create subnet b
+    - name: create subnet a
       ec2_vpc_subnet:
         state: present
         region: "{{vpc_region}}"
