@@ -15,43 +15,4 @@
           name: miki_VPC
           tenancy: default
     
-    - name: create_subnet_a
-      ec2_vpc_subnet:
-        state: present
-        region: "{{vpc_region}}"
-        vpc_id: "{{vpc.vpc.id}}"
-        cidr: "{{subnet_cidr_a}}"
-        az: "{{az_a}}"
-
-    - name: create_subnet_b
-      ec2_vpc_subnet:
-        state: present
-        region: "{{vpc_region}}"
-        vpc_id: "{{vpc.vpc.id}}"
-        cidr: "{{subnet_cidr_b}}"
-        az: "{{az_b}}"
-
-    - name: create_subnet_c
-      ec2_vpc_subnet:
-        state: present
-        region: "{{vpc_region}}"
-        vpc_id: "{{vpc.vpc.id}}"
-        cidr: "{{subnet_cidr_c}}"
-        az: "{{az_c}}"
-
-        
-    - name: create security group
-      ec2_group:
-        name: "{{security_group_name}}"
-        description: "{{description}}"
-        vpc_id: "{{vpc.vpc.id}}"
-        region: "{{vpc_region}}"
-        rules:
-          - proto: tcp
-            from_port: 80
-            to_port: 80
-            cidr_ip: 0.0.0.0/0
-          - proto: tcp
-            from_port: 22
-            to_port: 22
-            cidr_ip: 0.0.0.0/0
+   
