@@ -1,2 +1,13 @@
 ---
 # tasks file for package
+- name: Install company packages
+  package: 
+    name: "{{item}}"
+  with_item:
+    - telnet
+    - elinks
+    - wget
+    - unzip
+    - httpd
+    - lftp
+
