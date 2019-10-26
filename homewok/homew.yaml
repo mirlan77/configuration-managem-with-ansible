@@ -13,10 +13,8 @@
         region: us-east-2
         tags:
           name: miki_VPC
-          tenancy: default 
-
-          
-    - name: Create subnet 
+          tenancy: default       
+    - name: create  VPC subnet 
       ec2_vpc_subnet:
       state: present
       vpc_id: vpc-9807e9f3
