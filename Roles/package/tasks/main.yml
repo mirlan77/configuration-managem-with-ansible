@@ -3,7 +3,7 @@
 - name: Install company packages
   package: 
     name: "{{item}}"
-  with_item:
+  with_items:
     - telnet
     - elinks
     - wget
