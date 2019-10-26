@@ -21,5 +21,18 @@
         vpc_id: "{{vpc.vpc.id}}"
         cidr: "{{subnet_cidr_b}}"
         az: "{{az_b}}"   
-      
+    - name: create subnet b
+      ec2_vpc_subnet:
+        state: present
+        region: "{{vpc_region}}"
+        vpc_id: "{{vpc.vpc.id}}"
+        cidr: "{{subnet_cidr_b}}"
+        az: "{{az_b}}"
+    - name: create subnet c
+      ec2_vpc_subnet:
+        state: present
+        region: "{{vpc_region}}"
+        vpc_id: "{{vpc.vpc.id}}"
+        cidr: "{{subnet_cidr_c}}"
+        az: "{{az_c}}"  
    
