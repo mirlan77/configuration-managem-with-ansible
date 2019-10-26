@@ -14,9 +14,13 @@
         tags:
           name: miki_VPC
           tenancy: default       
-    - name: create  VPC subnet 
+    - name: Create subnet for database servers
       ec2_vpc_subnet:
       state: present
-      vpc_id: vpc-9807e9f3
+      vpc_id: vpc-123456
+      cidr: 10.0.1.16/28
+      resource_tags:
+      name: Database Subnet
+      register: database_subnet 
       
    
