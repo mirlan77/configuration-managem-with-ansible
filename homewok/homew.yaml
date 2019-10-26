@@ -1,23 +1,41 @@
----
-- name: Playbook for Provisioning
+
+- name: EC2 creates VPC on ohio region 
   hosts: localhost
+  connection: local
+  gather_facts: false
   become: yes
   become_method: sudo
   tasks:
-        - name: create a VPC with dedicated tenancy and a couple of tags
-  ec2_vpc_net:
-    name: Module_dev2
-    cidr_block: 10.10.0.0/16
-    region: us-east-2
-    tags:
-      module: ec2_vpc_net
-      this: works
-    tenancy: dedicated
-         - name: Create Private subnet
-  ec2_vpc_subnet:
-    state: present
-    vpc_id: vpc-9807e9f3
-    cidr: 10.0.1.16/28
-    resource_tags:
-      Name: Database Subnet
-  register: database_subnet 
+    - name: create VPC with tags
+      ec2_vpc_net:
+        name: Miki_VPC
+        cidr_block: 10.0.0.0/16
+        region: us-east-2
+        tags:
+          name: miki_VPC
+          tenancy: default
+    
+    - name: create subnet a
+      ec2_vpc_subnet:
+        state: present
+        region: "{{vpc_region}}"
+        vpc_id: "{{vpc.vpc.id}}"
+        cidr: "{{subnet_cidr_a}}"
+        az: "{{az_a}}"
+
+    - name: create subnet b
+      ec2_vpc_subnet:
+        state: present
+        region: "{{vpc_region}}"
+        vpc_id: "{{vpc.vpc.id}}"
+        cidr: "{{subnet_cidr_b}}"
+        az: "{{az_b}}"
+
+    - name: create subnet c
+      ec2_vpc_subnet:
+        state: present
+        region: "{{vpc_region}}"
+        vpc_id: "{{vpc.vpc.id}}"
+        cidr: "{{subnet_cidr_c}}"
+        az: "{{az_c}}"
+              
