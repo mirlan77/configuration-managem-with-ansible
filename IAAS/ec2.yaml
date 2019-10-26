@@ -2,7 +2,7 @@
 - name: Playbook for Provisioning
   hosts: localhost
   become: yes
-  become_method: sudo
+  become_method: sudo miki
   tasks:
     - ec2:
         key_name: "{{key_name}}"
