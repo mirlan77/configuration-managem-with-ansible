@@ -17,8 +17,8 @@
       ec2_vpc_net_facts:
         region: eu-central-1
         vpc_ids: "{{vpc_info.vpcs[0].vpc_id}}"
-       "tag:module": ec2_vpc_net
-      register: vpc_info 
+        tag:module: ec2_vpc_net
+        register: vpc_info 
       
     - name: Get VPC info
       ec2_vpc_net_facts:
