@@ -6,27 +6,27 @@
 
 
 
-    - name: Istall agent
-      package:
-        name: serverbackup-enterprise-agent
-        state: present
+- name: Istall agent
+  package:
+    name: serverbackup-enterprise-agent
+    state: present
+  notify: Agent_Installed
 
 
 
-    - name: Get Key
-      shell: "r1soft-setup --get-key http://34.245.214.119:8080"  
-      ignor_errors: true
+- name: Get Key
+  shell: "r1soft-setup --get-key http://34.245.214.119:8080"  
+  ignor_errors: true
 
 
+- name: Start agent
+  systemd:
+    name:  sbm-agent
+    state: restarted  
 
-    - name: Start agent
-      systemd:
-        name:  sbm-agent
-        state: restarted  
 
-
-    - name: Stop firewalld
-      systemd:
-        name: firewalld
-        state: stopped
-        enabled: false  
+- name: Stop firewalld
+  systemd:
+    name: firewalld
+    state: stopped
+    enabled: false  
