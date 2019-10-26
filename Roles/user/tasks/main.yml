@@ -3,7 +3,7 @@
 - name: Add company users
   user:
     name: "{{item}}"
-  with_item:
+  with_items:
     - bob
     - ben
     - lisa
