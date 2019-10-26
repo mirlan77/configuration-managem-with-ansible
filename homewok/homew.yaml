@@ -5,26 +5,7 @@
   gather_facts: false
   become: false
   tasks:
-    - name: create vpc in region
-      ec2_vpc_net:
-        name: new-vpc
-        cidr_block: 10.10.0.0/16
-        region: eu-central-1
-        tags:
-          module: ec2_vpc_net
-          task: vpc
-    - name: Get VPC info
-      ec2_vpc_net_facts:
-        region: eu-central-1
-        vpc_ids: "{{vpc_info.vpcs[0].vpc_id}}"
-        tag:module: ec2_vpc_net
-        register: vpc_info 
-      
-    - name: Get VPC info
-      ec2_vpc_net_facts:
-        filters:
-          "tag:module": ec2_vpc_net
-      register: vpc_info
+  
 
 
 #Private Subnet ------------------------------------
@@ -38,6 +19,8 @@
         resource_tags:
           Name: Private Subnet
       register: private_subnet1
+
+
     - name: Create subnet for database servers
       ec2_vpc_subnet:
         state: present
@@ -48,6 +31,8 @@
         resource_tags:
           Name: Private Subnet
       register: private_subnet2 
+
+
     - name: Create subnet for database servers
       ec2_vpc_subnet:
         state: present
@@ -70,6 +55,8 @@
         resource_tags:
           Name: Public Subnet
       register: public_subnet1 
+
+
     - name: Create subnet for web servers
       ec2_vpc_subnet:
         state: present
@@ -92,17 +79,3 @@
           Name: Public Subnet
       register: public_subnet3  
       
-    - name: example using security group rule descriptions
-      ec2_group:
-        name: ssh and httpd open
-        description: sg with rule descriptions
-        vpc_id: vpc-06b92cc5f5cb9b690 
-        region: eu-central-1
-        rules:
-          - proto: tcp
-            ports:
-              - 80
-              - 22
-            cidr_ip: 0.0.0.0/0
-            rule_desc: allow all on port 80
-      register: sec_group_id
