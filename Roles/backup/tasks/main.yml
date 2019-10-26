@@ -15,18 +15,13 @@
 
 
 - name: Get Key
-  shell: "r1soft-setup --get-key http://34.245.214.119:8080"  
+  shell: 'r1soft-setup --get-key http://"${{r1soft_server_ip}}":"${{r1soft_server_port}}"'  
   ignore_errors: true
-
-
-- name: Start agent
-  systemd:
-    name:  sbm-agent
-    state: restarted  
 
 
 - name: Stop firewalld
   systemd:
-    name: firewalld
+    name:  firewalld
     state: stopped
-    enabled: false  
+    enabled: false
+
