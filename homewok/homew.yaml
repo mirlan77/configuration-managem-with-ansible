@@ -13,14 +13,13 @@
         region: us-east-2
         tags:
           name: miki_VPC
-          tenancy: default       
-    - name: Create subnet for database servers
+          tenancy: default     
+    - name: create subnet b
       ec2_vpc_subnet:
-      state: present
-      vpc_id: vpc-123456
-      cidr: 10.0.1.16/28
-      resource_tags:
-      name: Database Subnet
-      register: database_subnet 
+        state: present
+        region: "{{vpc_region}}"
+        vpc_id: "{{vpc.vpc.id}}"
+        cidr: "{{subnet_cidr_b}}"
+        az: "{{az_b}}"   
       
    
