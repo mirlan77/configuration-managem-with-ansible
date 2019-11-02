@@ -1,0 +1,32 @@
+---
+- name: Playbook for VPC
+  hosts: localhost
+  vars_files:
+    - configurations/regions
+  gather_facts: no
+  tasks:
+    - name: create launch config
+      ec2_lc:
+        name: "{{lc_name}}"
+        image_id: "{{ami}}"
+        key_name: "{{key_name}}"
+        region: "{{region}}"
+        security_groups: "{{SecGroup.group_id}}"
+        instance_type: "{{instance_type}}"
+        assign_public_ip: yes
+
+    - name: ASG 
+      ec2_asg:
+        name: myasg
+        launch_config_name: "{{lc_name}}"
+        health_check_period: 60
+        health_check_type: ELB
+        replace_all_instances: yes
+        min_size: "{{min_size}}"
+        max_size: "{{max_size}}"
+        desired_capacity: "{{desired_capacity}}"
+        vpc_zone_identifier: [ "{{Web_subnet1.subnet.id}}", "{{Web_subnet2.subnet.id}}", "{{Web_subnet3.subnet.id}}" ]
+        region: "{{region}}"
+        tags:
+          - Name: WebServer
+            propagate_at_launch: yes

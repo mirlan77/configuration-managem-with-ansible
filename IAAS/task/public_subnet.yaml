@@ -1,0 +1,43 @@
+---
+- name: Playbook for Subnets
+  hosts: localhost
+  gather_facts: no
+  vars_files:
+    - configurations/regions
+  tasks:
+    - name: Collect VPC info
+      ec2_vpc_net_facts:
+        region: "{{region}}"
+        filters:
+          "tag:Task": VPC
+      register: VPC1
+
+    - name: Create Public Subnet 1
+      ec2_vpc_subnet:
+        state: present
+        vpc_id: "{{VPC1.vpcs[0].vpc_id}}"
+        region: "{{region}}"
+        cidr: "{{Public_cidr1}}"
+        resource_tags:
+          Name: Web Subnet1
+      register: Web_subnet1
+
+    - name: Create Public Subnet 2
+      ec2_vpc_subnet:
+        state: present
+        vpc_id: "{{VPC1.vpcs[0].vpc_id}}"
+        region: "{{region}}"
+        cidr: "{{Public_cidr2}}"
+        resource_tags:
+          Name: Web Subnet2
+      register: Web_subnet2
+
+    - name: Create Public Subnet 3
+      ec2_vpc_subnet:
+        state: present
+        vpc_id: "{{VPC1.vpcs[0].vpc_id}}"
+        region: "{{region}}"
+        cidr: "{{Public_cidr3}}"
+        resource_tags:
+          Name: Web Subnet3
+      register: Web_subnet3

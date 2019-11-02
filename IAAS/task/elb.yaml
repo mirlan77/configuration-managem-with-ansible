@@ -1,0 +1,22 @@
+---
+- name: Playbook for ELB
+  hosts: localhost
+  gather_facts: no
+  vars_files:
+    - configurations/regions
+  tasks:
+    - local_action:
+        module: ec2_elb_lb
+        name: "NewELB"
+        state: present
+        region: "{{region}}"
+        subnets: [ "{{Web_subnet1.subnet.id}}" ]
+        security_group_ids: "{{SecGroup.group_id}}"
+        listeners:
+          - protocol: http
+            load_balancer_port: 80
+            instance_port: 80
+            tags:
+              Name: "New ELB"
+              stack: "production"
+              client: "{{ELB_TAG_CLIENT}}"
